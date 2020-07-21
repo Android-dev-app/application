@@ -1,0 +1,398 @@
+#:import F kivy.factory.Factory
+
+
+<Custom@BoxLayout>:
+    ThreeLineAvatarIconListItem:
+        text: "Math"
+        secondary_text: "ch 8"
+        tertiary_text: "time: 2o\'clock"
+        IconLeftWidget:
+            icon:'angle-acute'
+<myload@MDSpinner>:
+    id: load
+    workg: ''
+    size_hint: None, None
+    pos: (80,90)
+    size: dp(40), dp(40)
+    pos_hint: {'x': .5, 'y': .5}
+    active: True
+NavigationLayout:
+    ScreenManager:
+        id: screen_manager
+
+
+
+
+        Screen:
+            name: 'login'
+            canvas.before:
+                Color:
+                    rgba: (1, 1, 1, 1)
+                Rectangle:
+                    source:'bg\mountain.png'
+                    size: root.width, root.height
+                    pos: self.pos
+            FloatLayout:
+                id: con
+                MDLabel:
+                    text:'Login'
+                    pos: (100,300)
+                    size_hint: None, None
+                    font_style:'H4'
+                MDTextField:
+                    id: em
+                    icon_left: "email"
+                    hint_text: "e_mail"
+                    pos: (70,270)
+                    size: 150, 50
+                    size_hint: None, None
+                    normal_color: app.theme_cls.accent_color
+                    color_active: 1, 0, 0, 1
+                MDTextField:
+                    id: number
+                    icon_left: "key"
+                    hint_text: "mobile no."
+                    pos: (70,220)
+                    size: 150, 50
+                    size_hint: None, None
+                    normal_color: app.theme_cls.accent_color
+                    color_active: 1, 0, 0, 1
+                MDTextField:
+                    id: name
+                    icon_left: "account"
+                    hint_text: "name"
+                    pos: (70,170)
+                    size: 150, 50
+                    size_hint: None, None
+                    normal_color: 1,0,0,1
+                    #color_active: 1, 0, 0, 1
+                MDTextButton:
+                    text:'not resistered?'
+                    pos: (95,140)
+                    size_hint: None, None
+                    on_press:
+                        screen_manager.current='regis'
+                MDLabel:
+                    text:'submit to agree '
+                    pos: (95,66)
+                    size_hint: None, None
+                    font_style:'Caption'
+                MDTextButton:
+                    text:'terms and conditions'
+                    pos: (80,90)
+                    size_hint: None, None
+
+                MDTextButton:
+
+                    id: cont
+                    ts:'false'
+                    nam: ''
+                    em: ''
+                    num: ''
+                    pos: (40,0)
+                    size: 200, 90
+                    size_hint: None, None
+                    background_normal: 'bg\Continue.png'
+                    on_press:
+                        #con.add_widget(F.myload())
+                        app.delay()
+                        app.login()
+                        screen_manager.current= 'otp' if ((name.text == self.nam) and (number.text == self.num) and (em.text == self.em)) else 'login'
+                        app.som_warn()
+
+
+
+
+        Screen:
+            name: 'cl'
+            canvas.before:
+                Color:
+                    rgba: (1, 1, 1, 1)
+                Rectangle:
+                    source:'bg\z.jpg'
+
+                    size: root.width, root.height
+                    pos: self.pos
+
+            GridLayout:
+                cols: 1
+                default_size: None, dp(56)
+                MDToolbar:
+                    title: "Studyology"
+                    MDIconButton:
+                        icon: "settings"
+                        on_press:
+                            app.show_theme_picker()
+                    MDIconButton:
+                        icon: "plus"
+                        on_press:
+                            screen_manager.current = 'post'
+                ScrollView:
+                    id: scroll
+                    MDList:
+                        id: test
+                        ThreeLineAvatarIconListItem:
+                            id : math
+                            text: "Math"
+                            secondary_text: "--"
+                            tertiary_text: "time:--"
+                            IconLeftWidget:
+                                icon:'angle-acute'
+                        ThreeLineAvatarIconListItem:
+                            id: bio
+                            text: "bio"
+                            secondary_text: "ch 8"
+                            tertiary_text: "time: 2o\'clock"
+                            ImageLeftWidget:
+                                source: 'icons\dna.png'
+
+
+                        ThreeLineAvatarIconListItem:
+                            id: chem
+                            text: "chem"
+                            secondary_text: "--"
+                            tertiary_text: "time: --"
+                            ImageLeftWidget:
+                                source: 'bg\chem.png'
+                        ThreeLineAvatarIconListItem:
+                            id: phy
+                            text: "phy"
+                            secondary_text: "--"
+                            tertiary_text: "time: --"
+                            ImageLeftWidget:
+                                source: 'bg\phy.png'
+                        ThreeLineAvatarIconListItem:
+                            id: hist
+                            text: "history"
+                            secondary_text: "--"
+                            tertiary_text: "time: --"
+                            ImageLeftWidget:
+                                source: 'bg\history.png'
+
+                        ThreeLineAvatarIconListItem:
+                            id: civ
+                            text: "civics"
+                            secondary_text: "--"
+                            tertiary_text: "time: --"
+                            ImageLeftWidget:
+                                source: 'bg\history.png'
+
+                        ThreeLineAvatarIconListItem:
+                            id: pbi
+                            text: "punjabi"
+                            secondary_text: "--"
+                            tertiary_text: "time: --"
+                            ImageLeftWidget:
+                                source: 'bg\punjabi.png'
+                                
+
+
+        Screen:
+            name: 'otp'
+            canvas.before:
+                Color:
+                    rgba: (1, 1, 1, 1)
+                Rectangle:
+                    source:'bg\mountain.png'
+                    size: root.width, root.height
+                    pos: self.pos
+            MDLabel:
+                text:'OTP'
+                pos: (115,230)
+                size_hint: None, None
+                font_style:'H4'
+            MDTextField:
+                id : otp
+                icon_left: "key"
+                hint_text: "OTP"
+                #pos_hint:{"right":1,"top":5}
+                pos: (50,200)
+                size: 170, 50
+                size_hint: None, None
+                normal_color: app.theme_cls.accent_color
+                color_active: 1, 0, 0, 1
+            MDTextButton:
+                pos: (35,50)
+                size: 200, 90
+                size_hint: None, None
+                on_release:
+                    screen_manager.current= 'cl' if otp.text == '' else 'otp'
+                    app.logtodata()
+                    app.otp()
+                background_normal: 'bg\Continue.png'
+            MDTextButton:
+                text:'did\'n recived otp'
+                pos: (60,175)
+                size: 200, 90
+                size_hint: None, None
+                on_press:
+                    screen_manager.current= 'login'
+
+
+        Screen:
+            name: 'regis'
+            canvas.before:
+                Color:
+                    rgba: (1, 1, 1, 1)
+                Rectangle:
+                    source:'bg\mountain.png'
+                    size: root.width, root.height
+                    pos: self.pos
+            FloatLayout:
+                adaptive_height: True
+                MDLabel:
+                    text:'Register'
+                    pos: (110,300)
+                    size_hint: None, None
+                    font_style:'H5'
+                MDTextField:
+                    id: e_m
+                    icon_left: "email"
+                    hint_text: "e_mail"
+                    #pos_hint:{"right":1,"top":5}
+                    pos: (70,260)
+                    size: 150, 50
+                    size_hint: None, None
+                    normal_color: app.theme_cls.accent_color
+                    color_active: 1, 0, 0, 1
+                MDTextField:
+                    id: naam
+                    password: 'true'
+                    icon_left: "key"
+                    hint_text: "name"
+                    #pos_hint:{"right":1,"top":5}
+                    pos: (70,220)
+                    size: 150, 50
+                    size_hint: None, None
+                    normal_color: app.theme_cls.accent_color
+                    color_active: 1, 0, 0, 1
+                MDTextField:
+                    id: nuum
+                    icon_left: "account"
+                    hint_text: "phone no."
+                    #pos_hint:{"right":1,"top":5}
+                    pos: (70,180)
+                    size: 150, 50
+                    size_hint: None, None
+                    normal_color: app.theme_cls.accent_color
+                    color_active: 1, 0, 0, 1
+                MDTextButton:
+                    text:'resistered, login here'
+                    pos: (70,130)
+                    size_hint: None, None
+                MDLabel:
+                    text:'submit to agree '
+                    pos: (95,66)
+                    size_hint: None, None
+                    font_style:'Caption'
+                MDTextButton:
+                    text:'terms and conditions'
+                    pos: (80,90)
+                    size_hint: None, None
+                    on_press:
+                        screen_manager.current = 'term and conditions'
+                MDTextButton:
+                    pos: (35,0)
+                    size: 200,90
+                    size_hint: None, None
+                    background_normal: 'bg\Continue.png'
+                    on_press:
+                        app.regis()
+                        screen_manager.current= 'otp'
+
+
+        Screen:
+            name: 'post'
+            canvas.before:
+                Color:
+                    rgba: (1, 1, 1, 1)
+                Rectangle:
+                    source:'icons\maketest.png'
+                    size: root.width, root.height
+                    pos: self.pos
+            MDToolbar:
+                title: 'post test'
+                pos_hint: {"top": 1}
+                MDIconButton:
+                    icon: 'arrow-left'
+                    on_press: screen_manager.current='cl'
+                MDIconButton:
+                    icon: 'arrow-right'
+
+            MDCard:
+                size_hint: None, None
+                size: "250dp", "150dp"
+                pos_hint: {"center_x": .5, "center_y": .72}
+                orientation: "vertical"
+                MDLabel:
+                    text: 'Test'
+                    halign:'center'
+
+                    font_style:'H5'
+
+
+
+                MDTextField:
+                    id:subject
+                    hint_text: 'class'
+                    normal_color: app.theme_cls.accent_color
+                    multiline: True
+                    helper_text: "for eg. 1,2,3"
+                    helper_text_mode: "on_focus"
+
+                    size: 230,90
+                    size_hint: None, None
+
+                MDTextField:
+                    hint_text: 'Type Description'
+                    normal_color: app.theme_cls.accent_color
+                    multiline: True
+
+                    size: 230,90
+                    size_hint: None, None
+            MDCard:
+                size_hint: None, None
+                size: "250dp", "50dp"
+                pos_hint: {"center_x": .5, "center_y": .42}
+                orientation: "vertical"
+
+
+                MDTextButton:
+                    id: time
+                    text: 'Pick Time'
+                    font_style:'Subtitle1'
+                    on_press:app.show_time_picker()
+                Widget:
+                MDSeparator:
+                    height: "1dp"
+                Widget:
+                MDTextButton:
+                    id: date
+                    text: 'Pick Date'
+                    font_style:'Subtitle1'
+                    on_press: app.show_date_picker()
+
+
+
+
+
+
+        Screen:
+            name: 'term and conditions'
+            BoxLayout:
+                orientation:'vertical'
+                MDLabel:
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    valign: 'top'
+
+                    text:'TERMS AND CONDITIONS \n'
+                    font_style:'H4'
+                ScrollView:
+                    do_scroll_x: False
+                    do_scroll_y: True
+                    MDLabel:
+
+                        text:"I the user of this appliction(studyology) agree that i will use this app only for personal use. \n \n By clicking the AGREE button I agree the terms and conditions of this app which are as follow: \n\n -"
+
+
