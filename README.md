@@ -24,3 +24,23 @@ just copy these codes in your cmd
 
     pip install sqlite3
 
+## what's next?
+
+### First install git on your computer
+
+Go to [this link](https://git-scm.com/download/win) for git to start download
+
+### copy my project
+
+    Git clone https://github.com/Android-dev-app/application
+
+### start the project 
+
+    
+    Cd application
+
+    Python main.py
+
+Open another terminal and type
+
+    Python server.py
