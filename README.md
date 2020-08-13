@@ -54,3 +54,8 @@ Go to [this link](https://git-scm.com/download/win) for git to start download
 Open another terminal and type
 
     Python server.py
+
+
+## contributing to this repository
+
+Any body can add or ask for update in any file
